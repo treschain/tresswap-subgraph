@@ -1,0 +1,24 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: mainnet
+    source:
+      address: "0x217bE88CBEc6d0C4F95D8c34433F8Ce9950433b1"
+      abi: Contract
+      startBlock: 16552179
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - PairCreated
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handlePairCreated
+      file: ./src/contract.ts
